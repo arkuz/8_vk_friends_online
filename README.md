@@ -19,9 +19,9 @@ $ python3 vk_friends_online.py
 VK login: useruser@mail.ru
 VK password: 
 Friends online:
-  Кирилл Мороз, id:134535
-  Светлана Светик, id:6758787
-  Александр Красиногов, id:35637373
+  id:134535
+  id:6758787
+  id:35637373
 ```
 
 # Project Goals
