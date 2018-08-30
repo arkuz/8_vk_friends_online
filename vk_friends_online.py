@@ -27,33 +27,28 @@ def get_api_session(app_id, api_version, login, password, scope):
         return None
 
 
-'''
-# This api returns only a list of user IDs
+# This api returns list of online users (only user IDs)
 def get_online_friends(api):
     try:
         return api.friends.getOnline()
     except vk.exceptions.VkAPIError:
         return None
+
+
 '''
-
-
-# With this api, you can pull out additional user data
+# This api returns all list of users (with additional user data)
 def get_online_friends(api):
     try:
         return api.friends.get(fields='online')
     except vk.exceptions.VkAPIError:
         return None
+'''
 
 
 def output_friends_to_console(friends_online):
     print('Friends online:')
     for friend in friends_online:
-        if bool(friend['online']):
-            print('  {0} {1}, id:{2}'.format(
-                friend['first_name'],
-                friend['last_name'],
-                friend['user_id'],
-            ))
+        print('  id:{}'.format(friend))
 
 
 if __name__ == '__main__':
