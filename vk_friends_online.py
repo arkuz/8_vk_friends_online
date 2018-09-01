@@ -3,7 +3,6 @@ import sys
 import getpass
 
 APP_ID = 6677787
-API_VERSION = 5.84
 
 
 def get_user_login():
@@ -14,7 +13,7 @@ def get_user_password():
     return getpass.getpass(prompt='VK password: ')
 
 
-def get_api_session(app_id, api_version, login, password, scope):
+def get_api_session(app_id, login, password, scope, api_version=5.84):
     try:
         session = vk.AuthSession(
             app_id=app_id,
@@ -27,22 +26,11 @@ def get_api_session(app_id, api_version, login, password, scope):
         return None
 
 
-# This api returns list of online users (only user IDs)
 def get_online_friends(api):
     try:
         return api.friends.getOnline()
     except vk.exceptions.VkAPIError:
         return None
-
-
-'''
-# This api returns all list of users (with additional user data)
-def get_online_friends(api):
-    try:
-        return api.friends.get(fields='online')
-    except vk.exceptions.VkAPIError:
-        return None
-'''
 
 
 def output_friends_to_console(friends_online):
@@ -63,7 +51,6 @@ if __name__ == '__main__':
     scope = 'friends'
     api_params = [
         APP_ID,
-        API_VERSION,
         login,
         password,
         scope,
